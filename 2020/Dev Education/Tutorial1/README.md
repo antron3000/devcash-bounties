@@ -11,14 +11,13 @@ Bounty adress: _will be updated soon_
 ### My Tutorial
 :warning: _work in progress_
 
-A guide through building using [Substrate](https://substrate.dev/) 
+A short beginners guide for building with [Substrate](https://substrate.dev/).
 
-The aim of this tutorial is to provide an overview of things to consider when diving into building with Subtrate.
+The aim of this tutorial is to: (1) provide a brief overview of Subtrate's building blocks and key notions and (2) provide a step by step for adding custom functionality to a template node.
 
 It will cover: 
 - Basic setup and tools 
-- Design decisions and fundemental concepts (runtimes, pallets, macros, weights, governance and genesisconfig)
-- An step-by-step to build a a chain whose genesis will be a multisig account and can schedule runtime upgrades
+- A step-by-step to launch a Substrate chain with a collection of pallets that provides functionality for the runtime to deploy and execute WebAssembly smart-contracts.
 
 # 1. Getting started
 ## Installing Substrate node templates
@@ -60,6 +59,7 @@ In what we're compiling, our runtime has the following pallets configured (see [
 Learn more by checking out the Substrate Developer Hub [docs](https://substrate.dev/docs/en/).
 
 ## Explore the template setup
+Below is the node templates directory tree. Get familiar with the structure so you know where to find the files we'll be modifying in this tutorial.
 
 ```bash
 ├── Cargo.lock
@@ -112,13 +112,22 @@ If all is working fine, you should see blocks being created in your terminal.
 To see what's happening with a better GUI, you can head to: https://polkadot.js.org/apps/ and switch to Local Node. 
 
 # 3. Importing a new pallet
+We'll be importing a number of dependencies to implement the [``pallets_contracts``](https://substrate.dev/rustdocs/v2.0.0/pallet_contracts/index.html) pallet. These will be:
 
-## Setting up runtime
-We'll be creating a pallet that can name accounts and keep track of them, called the [Nicks Pallet](https://substrate.dev/rustdocs/v2.0.0/pallet_nicks/index.html).  
-
-1. Update ``runtime/Cargo.toml`` by adding the following
 ```bash
-pallet-nicks = { default-features = false, version = '2.0.0' }
+pallet-contracts = { version = '2.0.0', default_features = false }
+pallet-contracts-primitives = { version = '2.0.0', default_features = false }
+pallet-contracts-rpc-runtime-api = { version = '0.8.0', default-features = false }
+```
+
+## Setting things up for our runtime
+
+**1. Update ``runtime/Cargo.toml`` by adding the following:**
+```bash
+[dependencies]
+#--snip--
+pallet-contracts = { version = '2.0.0', default_features = false }
+pallet-contracts-primitives = { version = '2.0.0', default_features = false }
 ```
 and: 
 
@@ -127,64 +136,58 @@ and:
 default = ["std"]
 std = [
     #--snip--
-    'pallet-nicks/std',
+    'pallet-contracts/std',
+    'pallet-contracts-primitives/std',    
     #--snip--
 ]
 ```
-You can run the following command to check whether the pallet has  been imported with no errors: 
+Run the following command to check whether the pallet has been imported with no errors: 
 ```bash
-cargo check -p node-template-runtime
+SKIP_WASM_BUILD=1 cargo check -p node-template-runtime
 ```
 
 ## Setting up the pallet
-2. Configure the pallet:
-For the Nicks Pallet, we can find out how to configure it by looking at is ``Trait`` (see the [docs](https://substrate.dev/rustdocs/v2.0.0/pallet_nicks/trait.Trait.html)). Here are the different trait types:
+**2. Configure the pallet:**
 
-- ``Currency`` - the currency type for name deposits
-- ``ReservationFee`` - amount required to reserve
-- `` Slashed`` - callback invoked when a deposit is forfeited
-- ``ForceOrigin`` - used to idenfity the pallet's admin
-- ``MinLength`` - the mininum length for a name
-- ``MaxLength``  - the maximum length for a name
+For the Contracts Pallet, we can find out how to configure it by looking at its ``Trait`` types (see the [docs](https://substrate.dev/rustdocs/v2.0.0/pallet_contracts/trait.Trait.html)). 
 
 In ``runtime/src/lib.rs``, paste the following configurations for the Nick's Pallet:
 
 ```bash
+// Contracts price units.
+pub const MILLICENTS: Balance = 1_000_000_000;
+pub const CENTS: Balance = 1_000 * MILLICENTS;
+pub const DOLLARS: Balance = 100 * CENTS;
+
 parameter_types! {
-    // Choose a fee that incentivizes desireable behavior.
-    pub const NickReservationFee: u128 = 100;
-    pub const MinNickLength: usize = 8;
-    // Maximum bounds on storage are important to secure your chain.
-    pub const MaxNickLength: usize = 32;
+    pub const TombstoneDeposit: Balance = 16 * MILLICENTS;
+    pub const RentByteFee: Balance = 4 * MILLICENTS;
+    pub const RentDepositOffset: Balance = 1000 * MILLICENTS;
+    pub const SurchargeReward: Balance = 150 * MILLICENTS;
 }
 
-impl pallet_nicks::Trait for Runtime {
-    // The Balances pallet implements the ReservableCurrency trait.
-    // https://substrate.dev/rustdocs/v2.0.0/pallet_balances/index.html#implementations-2
-    type Currency = pallet_balances::Module<Runtime>;
-
-    // Use the NickReservationFee from the parameter_types block.
-    type ReservationFee = NickReservationFee;
-
-    // No action is taken when deposits are forfeited.
-    type Slashed = ();
-
-    // Configure the FRAME System Root origin as the Nick pallet admin.
-    // https://substrate.dev/rustdocs/v2.0.0/frame_system/enum.RawOrigin.html#variant.Root
-    type ForceOrigin = frame_system::EnsureRoot<AccountId>;
-
-    // Use the MinNickLength from the parameter_types block.
-    type MinLength = MinNickLength;
-
-    // Use the MaxNickLength from the parameter_types block.
-    type MaxLength = MaxNickLength;
-
-    // The ubiquitous event type.
+impl pallet_contracts::Trait for Runtime {
+    type Time = Timestamp;
+    type Randomness = RandomnessCollectiveFlip;
+    type Currency = Balances;
     type Event = Event;
+    type DetermineContractAddress = pallet_contracts::SimpleAddressDeterminer<Runtime>;
+    type TrieIdGenerator = pallet_contracts::TrieIdFromParentCounter<Runtime>;
+    type RentPayment = ();
+    type SignedClaimHandicap = pallet_contracts::DefaultSignedClaimHandicap;
+    type TombstoneDeposit = TombstoneDeposit;
+    type StorageSizeOffset = pallet_contracts::DefaultStorageSizeOffset;
+    type RentByteFee = RentByteFee;
+    type RentDepositOffset = RentDepositOffset;
+    type SurchargeReward = SurchargeReward;
+    type MaxDepth = pallet_contracts::DefaultMaxDepth;
+    type MaxValueSize = pallet_contracts::DefaultMaxValueSize;
+    type WeightPrice = pallet_transaction_payment::Module<Self>;
 }
+
 ```
 
-Last step before we can get the Nicks Pallet ready for the runtime to compile. We have to tell our runtime it needs to include the Nicks Pallet (jump to the ``construct_runtime`` macro in ``runtime/src/lib.rs``):
+Last step before we can get things ready for the runtime to compile: we have to tell our runtime what pallets it needs to include (jump to the ``construct_runtime`` macro in ``runtime/src/lib.rs``) Learn more about this ``frame_support`` macro [here](https://substrate.dev/rustdocs/v2.0.0/frame_support/macro.construct_runtime.html):
 
 ```bash
 construct_runtime!(
@@ -196,7 +199,7 @@ construct_runtime!(
         /* --snip-- */
 
         /*** Add This Line ***/
-        Nicks: pallet_nicks::{Module, Call, Storage, Event<T>},
+        Contracts: pallet_contracts::{Module, Call, Config, Storage, Event<T>},
     }
 );
 ```
@@ -206,6 +209,9 @@ Let's check if it all works! Use this command to compile your node:
 ```bash
 WASM_BUILD_TOOLCHAIN=nightly-2020-10-05 cargo build --release
 ```
+# Exposing the Contracts API
+(TODO)
+
 To run your node, assuming nothing went wrong above use this command:
 ```bash
 ./target/release/node-template --dev --tmp
@@ -217,5 +223,6 @@ Now head to Polkadot's GUI and you should be able to  submit a ``nicks`` extrins
 
 
 
-
-
+:bulb: Ideas for next tutorials:
+- Fundemental concepts (runtimes, pallets, macros, weights, governance and GenesisConfig)
+- Design decisions (why implement certain pallets, how to customize logic, use-case specific architecture)
