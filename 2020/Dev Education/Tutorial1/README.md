@@ -1,12 +1,10 @@
-Bounty adress: _will be updated soon_ 
 
-### Here's the original bounty (by Antoine) 
-
-**Task**: Write a useful tutorial
-
-**Description**: Teach something valuable 
-
-**Devcash reward**: 100, 000 {D}
+_Here's the original bounty (by Antoine)_
+**Bounty adress**: *will be updated soon* |
+--- |
+ **Task**: Write a useful tutorial |
+ **Description**: Teach something valuable |
+ **Devcash reward**: 100, 000 {D} |
 
 ### My Tutorial
 :warning: _work in progress_
@@ -18,24 +16,25 @@ The aim of this tutorial is to: (1) provide a brief overview of Subtrate's build
 It will cover: 
 - Basic setup and tools 
 - A step-by-step to launch a Substrate chain with a collection of pallets that provides functionality for the runtime to deploy and execute WebAssembly smart-contracts.
+---
 
-# 1. Getting started
+# 1. Getting things setup
 ## Installing Substrate node templates
-Make sure you're environment is all setup for using Rust. Refer to [this tutorial] (https://substrate.dev/docs/en/knowledgebase/getting-started/) if it isn't already.
+Make sure you're environment is all setup for using Rust. Refer to [this tutorial](https://substrate.dev/docs/en/knowledgebase/getting-started/) if it isn't already.
 
 In this first step, we're going to clone the node template and compile it. This can take a little while depending on your hardware, don't panic (took me 25m57s on a fairly powerful laptop).
 
-1. Clone the Node Template
+i. Clone the Node Template
 ```bash 
 git clone -b v2.0.0 --depth 1 https://github.com/substrate-developer-hub/substrate-node-template
 ```
 
-2. Initialize WASM
+ii. Initialize WASM
 ```bash
 make init
 ```
 
-3. Compile it
+iii. Compile it
 ```bash 
 make build
 ```
@@ -44,7 +43,7 @@ While it compiles, let's understand what this template is and what it will do fo
 
 The template is basically boiler plate from which you can customize your runtime. Referred to as a "FRAME-based Substrate node", "FRAME" is short for: _a Framework for Runtime Aggregation of Modularized Entities_. Its essentially a pretty mightly library of libraries for building things with Substrate. 
 
-In what we're compiling, our runtime has the following pallets configured (see [docs](https://github.com/substrate-developer-hub/substrate-node-template/blob/cbf28f104237648512e8e3b6af2126e840d56243/runtime/src/lib.rs#L269-L287)). We can find out what each one does by looking at their documentation:
+In what we're compiling, our runtime has the following pallets configured (see [docs](https://github.com/substrate-developer-hub/substrate-node-template/blob/cbf28f104237648512e8e3b6af2126e840d56243/runtime/src/lib.rs#L269-L287)). Take a look at each pallets' documentation to better understand what each one is doing: 
 
 - [``frame_system``](https://crates.parity.io/frame_system/index.html) - provides low-level access to core types and cross-cutting utilities.
 - [``pallet_randomness_collective_flip``](https://crates.parity.io/pallet_randomness_collective_flip/index.html) - provides a ``random`` function that generates low-influence random values based on the block hashes from the previous 81 blocks.
@@ -54,7 +53,7 @@ In what we're compiling, our runtime has the following pallets configured (see [
 - [``pallet_balances``](https://crates.parity.io/pallet_balances/index.html) - provides functionality for handling accounts and balances.
 - [``pallet_transaction_payment``](https://crates.parity.io/pallet_transaction_payment/index.html) - provides the basic logic needed to pay the absolute minimum amount needed for a transaction to be included. 
 - [``pallet_sudo``](https://crates.parity.io/pallet_sudo/index.html) - allows for a single account (called the "sudo key") to execute dispatchable functions that require a Root call or designate a new account to replace them as the sudo key. 
-- [``pallet_template``](https://crates.parity.io/pallet_template/index.html) - _doesn't do anything_
+- [``pallet_template``](https://crates.parity.io/pallet_template/index.html) - _doesn't do anything, just there to be customized_
 
 Learn more by checking out the Substrate Developer Hub [docs](https://substrate.dev/docs/en/).
 
@@ -98,9 +97,7 @@ Below is the node templates directory tree. Get familiar with the structure so y
     └── release
         ├── build
 ```
-## Running your node
-
-
+## Let's get back to it :computer:
 
 # 2. Launching your node
 
@@ -109,7 +106,7 @@ Once everything has compiled, it's time to test our node. Running this command w
 
 If all is working fine, you should see blocks being created in your terminal.
 
-To see what's happening with a better GUI, you can head to: https://polkadot.js.org/apps/ and switch to Local Node. 
+To see what's happening with a more slick UI, head to: https://polkadot.js.org/apps/ and switch to Local Node. 
 
 # 3. Importing a new pallet
 We'll be importing a number of dependencies to implement the [``pallets_contracts``](https://substrate.dev/rustdocs/v2.0.0/pallet_contracts/index.html) pallet. These will be:
@@ -122,7 +119,7 @@ pallet-contracts-rpc-runtime-api = { version = '0.8.0', default-features = false
 
 ## Setting things up for our runtime
 
-**1. Update ``runtime/Cargo.toml`` by adding the following:**
+**I. Update ``runtime/Cargo.toml`` by adding the following:**
 ```bash
 [dependencies]
 #--snip--
@@ -147,11 +144,12 @@ SKIP_WASM_BUILD=1 cargo check -p node-template-runtime
 ```
 
 ## Setting up the pallet
-**2. Configure the pallet:**
+
+**II. Configure the pallet:**
 
 For the Contracts Pallet, we can find out how to configure it by looking at its ``Trait`` types (see the [docs](https://substrate.dev/rustdocs/v2.0.0/pallet_contracts/trait.Trait.html)). 
 
-In ``runtime/src/lib.rs``, paste the following configurations for the Nick's Pallet:
+In ``runtime/src/lib.rs``, paste the following configurations for the Contracts Pallet:
 
 ```bash
 // Contracts price units.
@@ -187,7 +185,7 @@ impl pallet_contracts::Trait for Runtime {
 
 ```
 
-Last step before we can get things ready for the runtime to compile: we have to tell our runtime what pallets it needs to include (jump to the ``construct_runtime`` macro in ``runtime/src/lib.rs``) Learn more about this ``frame_support`` macro [here](https://substrate.dev/rustdocs/v2.0.0/frame_support/macro.construct_runtime.html):
+Last step before we can get things ready for the runtime to compile: we have to tell our runtime what pallets we want it to include (jump to the ``construct_runtime`` macro in ``runtime/src/lib.rs``) Learn more about this ``frame_support`` macro [here](https://substrate.dev/rustdocs/v2.0.0/frame_support/macro.construct_runtime.html):
 
 ```bash
 construct_runtime!(
@@ -203,13 +201,110 @@ construct_runtime!(
     }
 );
 ```
-## Compile and run node
-Let's check if it all works! Use this command to compile your node:
+
+## Linking things up :wrench:
+
+To make full use of the Contracts pallet, we need to expose custom endpoints to enable us to read contract state from off chain. Let's lay down what the next X steps will be :
+(i) Add ```pallet_contracts_rpc_runtime_api``` to our runtime in ```runtime/Cargo.toml```
+(ii) Tell our runtime about the return type of our getter function which will return the current state of execution (from ```ContractsApi```)
+(iii) Implement methods from our [ContractsApi trait](https://crates.parity.io/pallet_contracts_rpc_runtime_api/trait.ContractsApi.html) to configure our API endpoints
+(iv) Adding an outer node with an RPC API extension. This is the external node that will mimic off-chain interaction which needs to be updated about on-chain changes. 
+(v) Updating the genesis configuration of our chain 
+
+**III. Adding API endpoints:**
+(i) Add the following snips to ```runtime/Cargo.toml``` (like we did in step 3.I) :pencil: :
+
+```bash
+[dependencies]
+#--snip--
+pallet-contracts-rpc-runtime-api = { version = '0.8.0', default-features = false }
+
+[features]
+default = ['std']
+std = [
+    #--snip--
+    'pallet-contracts-rpc-runtime-api/std',
+]
+```
+
+(ii) Add this ```use``` statement to ```runtime/src/lib.rs``` :glasses: :
+
+```bash
+use pallet_contracts_rpc_runtime_api::ContractExecResult;
+``` 
+
+(iii) Implement the Contracts API for our runtime by adding some stuff to the ``impl_runtime_apis!``. We'll go through what its doing, but first put the following code snip in your ``runtime/src/lib.rs`` :sunglasses: :
+
+```bash
+impl_runtime_apis! {
+   /* --snip-- */
+
+   /*** Add This Block ***/
+    impl pallet_contracts_rpc_runtime_api::ContractsApi<Block, AccountId, Balance, BlockNumber>
+        for Runtime
+    {
+        fn call(
+            origin: AccountId,
+            dest: AccountId,
+            value: Balance,
+            gas_limit: u64,
+            input_data: Vec<u8>,
+        ) -> ContractExecResult {
+            let (exec_result, gas_consumed) =
+                Contracts::bare_call(origin, dest.into(), value, gas_limit, input_data);
+            match exec_result {
+                Ok(v) => ContractExecResult::Success {
+                    flags: v.flags.bits(),
+                    data: v.data,
+                    gas_consumed: gas_consumed,
+                },
+                Err(_) => ContractExecResult::Error,
+            }
+        }
+
+        fn get_storage(
+            address: AccountId,
+            key: [u8; 32],
+        ) -> pallet_contracts_primitives::GetStorageResult {
+            Contracts::get_storage(address, key)
+        }
+
+        fn rent_projection(
+            address: AccountId,
+        ) -> pallet_contracts_primitives::RentProjectionResult<BlockNumber> {
+            Contracts::rent_projection(address)
+        }
+    }
+   /*** End Added Block ***/
+}
+```
+As you can see, there's 3 methods we're implementing to our ``impl_runtime_apis!`` macro: ```call```, ```get_storage``` and ```rent_projection``` (see full docs of ContractsApi [here](https://crates.parity.io/pallet_contracts_rpc_runtime_api/trait.ContractsApi.html) to see what other methods you could implement from ContractsApi):
+
+- ```call``` - to perform a call from a specified account to a given contract
+- ```get_storage``` - to query a given storage key in a given contract
+- ```rent_projection``` - to find out the time a given contract will be able to sustain paying its rent
+
+
+Now, make sure you've saved everything and checked that it's working by running this command:
+```bash
+SKIP_WASM_BUILD=1 cargo check -p node-template-runtime
+```
+
+(iv) 
+
+(v)
+
+
+## Compile and run node 
+Let's check if it all works! :fingers_crossed: Use this command to compile your node:
 
 ```bash
 WASM_BUILD_TOOLCHAIN=nightly-2020-10-05 cargo build --release
 ```
-# Exposing the Contracts API
+
+# Exposing the Contracts 
+
+
 (TODO)
 
 To run your node, assuming nothing went wrong above use this command:
