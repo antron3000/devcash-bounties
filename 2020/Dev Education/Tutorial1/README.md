@@ -7,17 +7,18 @@ _Here's the original bounty (by Antoine)_
  **Devcash reward**: 100, 000 {D} |
 
 ### My Tutorial
-:warning: _work in progress_
 
-A beginners guide for building with [Substrate](https://substrate.dev/).
+A beginners guide for building with [Substrate](https://substrate.dev/). Please feel free to contribute any improvements to this.
 
-The aim of this tutorial is to: (1) provide a brief overview of Subtrate's building blocks and key notions and (2) provide a guide for adding custom functionality to a template node.
+The aim of this tutorial is to: 
 
-It will cover: 
-- Basic setup and tools 
-- A step-by-step to launch a Substrate chain with a collection of pallets (also known as modules) that provide functionality for the runtime to deploy and execute WebAssembly smart-contracts.
+(1) Provide a general understanding of some of Subtrate's building blocks (setup and tools, the Rust compiler, the Substrate runtime, FRAME pallets, macros, GenesisConfig, RPC);
+
+(2) Provide a hands on guide for adding a pallet to a template node. 
+
+At the end of this tutorial, students will be able to understand the basics of using FRAME to launch a Substrate chain with a collection of pallets (also known as modules) that provide functionality for the runtime to deploy and execute WebAssembly smart-contracts. Building example smart contracts can be done using [ink!](https://github.com/paritytech/ink#examples). This is slightly more advanced and will be for another tutorial.
+
 ---
-
 # 1. Getting things setup :computer:
 ## Installing the Substrate node template
 Make sure you're environment is all setup for using Rust. Refer to [this tutorial](https://substrate.dev/docs/en/knowledgebase/getting-started/) if it isn't already.
@@ -38,9 +39,7 @@ iii. Compile it
 ```bash 
 make build
 ```
-:clock12: :clock1230: :clock1:
-
-While it compiles, let's understand what this template is and what it will do for us. :flashlight:
+:clock12: :clock1230: :clock1: While it compiles, let's understand what this template is and what it will do for us. :flashlight:
 
 The template is basically boiler plate from which you can customize your runtime. Referred to as a _"FRAME-based Substrate node"_, "FRAME" is short for: _a Framework for Runtime Aggregation of Modularized Entities_. Its essentially a pretty mightly library of libraries for building things with Substrate. :muscle:
 
@@ -58,8 +57,8 @@ In what we're compiling, our runtime has the following pallets configured (see [
 
 :point_right: Learn more by checking out the Substrate Developer Hub [docs](https://substrate.dev/docs/en/).
 
-## Explore the template setup
-Below is the node templates directory tree. Get familiar with the structure so you know where to find the files we'll be modifying in this tutorial. :palm_tree:
+## Have a look at the template directory setup :eyes:
+Below is the node template's directory tree. Get familiar with the structure so you know where to find the files we'll be modifying in this tutorial. :palm_tree:
 
 ```bash
 ├── Cargo.lock
@@ -98,11 +97,12 @@ Below is the node templates directory tree. Get familiar with the structure so y
     └── release
         ├── build
 ```
-## Let's get back to it :hourglass:
+:hourglass:
 
 # 2. Launching your node
 
-Assuming everything has compiled, it's time to test our node. Running this command will launch it in development mode:
+Assuming everything has compiled, it's time to test that our template node runs okay. Running this command will launch it in development mode:
+
 ``./target/release/node-template --dev --tmp``
 
 If all is working fine, you should see blocks being created in your terminal.
@@ -148,7 +148,7 @@ SKIP_WASM_BUILD=1 cargo check -p node-template-runtime
 
 **II. Configure the pallet:**
 
-For the Contracts pallet, we can find out how to configure it by looking at its ``Trait`` types (see the [docs](https://substrate.dev/rustdocs/v2.0.0/pallet_contracts/trait.Trait.html)). In this step, we're going to configure ``pallet_contract`` by setting our ```const``` values. 
+For the Contracts pallet, we can find out how to configure it by looking at its ``Trait`` types (see the [docs](https://substrate.dev/rustdocs/v2.0.0/pallet_contracts/trait.Trait.html)). In this step, we're going to configure ``pallet_contracts`` by setting our ```const``` values. 
 
 In ``runtime/src/lib.rs``, paste the following configurations for the Contracts Pallet:
 
@@ -208,9 +208,12 @@ Let's take a second to recap what we've done and make sure everythings working p
 ```bash
 SKIP_WASM_BUILD=1 cargo check -p node-template-runtime
 ```
-:heavy_check_mark: We've made a clone of the Substrate node template  
+:heavy_check_mark: We've made a clone of the Substrate node template
+
 :heavy_check_mark: We've learnt how to navigate our projects directory and how to configure our pallet
-:heavy_check_mark: We've included the ```pallet_contracts``` module to our runtime (_a pallet is just Substrate's terminology for a module. A pallet of pallets? Well, a rusty crate ofcourse_ :smirk:)
+
+:heavy_check_mark: We've included the ```pallet_contracts``` module to our runtime (_a pallet is just Substrate's terminology for a module. A pallet of pallets? Well, a rusty sturdy crate ofcourse_ :smirk:)
+
 :heavy_check_mark: We've learnt how to make use of cargo check while making changes to our runtime, to make sure we catch errors while we make progress
 
 **What's next?** 
@@ -219,10 +222,15 @@ SKIP_WASM_BUILD=1 cargo check -p node-template-runtime
 ## Linking things up for Remote Procedure Calls (RPC) :wrench:
 
 To make full use of the Contracts pallet, we need to expose custom endpoints to enable us to read contract state from off-chain. Let's lay down what the next 5 steps will be :
+
 (i) Add ```pallet_contracts_rpc_runtime_api``` to our runtime in ```runtime/Cargo.toml```
+
 (ii) Tell our runtime about the return type of our _getter_ function which will return the current state of execution (from ```ContractsApi```)
+
 (iii) Implement methods from our [ContractsApi trait](https://crates.parity.io/pallet_contracts_rpc_runtime_api/trait.ContractsApi.html) to configure our API endpoints
+
 (iv) Adding an outer node with an RPC API extension. This is the external node that will be used to mimic off-chain interactions setup to receive updates from on-chain changes
+
 (v) Updating the genesis configuration of our chain 
 
 **III. Adding API endpoints:**
@@ -292,18 +300,20 @@ impl_runtime_apis! {
    /*** End Added Block ***/
 }
 ```
-As you can see, there's 3 methods we're implementing to our ``impl_runtime_apis!`` macro: ```call```, ```get_storage``` and ```rent_projection``` (see full docs of ContractsApi [here](https://crates.parity.io/pallet_contracts_rpc_runtime_api/trait.ContractsApi.html) to see what other methods you could implement from ContractsApi):
+As you can see, there's 3 methods we're implementing to our ``impl_runtime_apis!`` macro: ```call```,  ```get_storage``` and ```rent_projection``` :
 
 - ```call``` - to perform a call from a specified account to a given contract
 - ```get_storage``` - to query a given storage key in a given contract
 - ```rent_projection``` - to find out the time a given contract will be able to sustain paying its rent
+
+Check out the full docs of ContractsApi [here](https://crates.parity.io/pallet_contracts_rpc_runtime_api/trait.ContractsApi.html) to see what other methods you could implement.
 
 Before we move on to finish steps (iv) and (v), make sure you've saved everything and checked that it's working:
 ```bash
 SKIP_WASM_BUILD=1 cargo check -p node-template-runtime
 ```
 
-(iv) :electric_plug: To add the outer node to our exposed runtime API, we'll be going in ```node/Cargo.toml``` to update the node's dependencies. Let's get right to it:
+(iv) To add the outer node to our exposed runtime API, we'll be going in ```node/Cargo.toml``` to update the node's dependencies. Let's get right to it:
 
 ```bash
 [dependencies]
@@ -351,9 +361,9 @@ For our purposes, we need to tell our chain that we'll be using [``ContractsConf
 use node_template_runtime::ContractsConfig;
 ```
 
-> :bulb: **Note:** our runtime is expecting us to specify this and won't compile until we do. Remember adding ``Contracts: pallet_contracts::{Module, Call, Config, Storage, Event<T>}, `` to our ``runtime/lib.rs`` file in the beggining of this tutorial? That the first thing the rust compiler will check for when it tries to build everything. Looking at the [``Struct pallet_contracts::Config``]https://substrate.dev/rustdocs/v2.0.0/pallet_contracts/struct.Config.html helps grasp the magic behind macros, crates and how modules interact within FRAME.
+> :bulb: **Note:** our runtime is expecting us to specify this and won't compile until we do. Remember adding ``Contracts: pallet_contracts::{Module, Call, Config, Storage, Event<T>}, `` to our ``runtime/lib.rs`` file in the beggining of this tutorial? That the first thing the rust compiler will check for when it tries to build everything. Looking at the [``Struct pallet_contracts::Config``](https://substrate.dev/rustdocs/v2.0.0/pallet_contracts/struct.Config.html) helps grasp the magic behind macros, crates and how modules interact within FRAME.
     
-Add the following block inside ``fn testnet_genesis( .. GenesisConfig{..`` (the ``..`` in not actual code, just intended to make things succinct): 
+Add the following block inside ``fn testnet_genesis( GenesisConfig{..})``: 
 
 ```bash
        /*** Add This Block ***/
@@ -377,9 +387,9 @@ And (assuming it compiled without errors) this one to run it:
 ./target/release/node-template --dev --tmp
 ``` 
 
-If everything worked, your chain is successfully producing blocks, you should be able to go to https://polkadot.js.org/apps/#/contracts and upload a contract to your chain. :smiley: :clap:
+If everything worked and your chain is successfully producing blocks, you should be able to go to https://polkadot.js.org/apps/#/contracts and upload a contract to your chain. :smiley: :clap:
 
-[./contract-ui.png]
+![contracts](contracts-ui.png)
 
 # Acknowledgements :pray:
 
@@ -387,6 +397,6 @@ Dan Forbes from Parity Technologies for providing the [basis of this tutorial](h
 
 
 :bulb: Ideas for next tutorials:
-- Interacting with Contracts using WASM
+- Interacting with Contracts with different forms of contracts (e.g. WASM and code hash)
 - Fundemental concepts (runtimes, pallets, macros, weights, governance and GenesisConfig)
 - Design decisions (why implement certain pallets, how to customize logic, use-case specific architecture)
