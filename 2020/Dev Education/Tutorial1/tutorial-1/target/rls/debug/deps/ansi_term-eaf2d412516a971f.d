@@ -1,0 +1,12 @@
+/home/alansky/Dev/devcash-bounties/2020/Dev Education/Tutorial1/substrate-node-template/target/rls/debug/deps/ansi_term-eaf2d412516a971f.rmeta: /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/lib.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/ansi.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/style.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/difference.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/display.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/write.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/windows.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/debug.rs
+
+/home/alansky/Dev/devcash-bounties/2020/Dev Education/Tutorial1/substrate-node-template/target/rls/debug/deps/ansi_term-eaf2d412516a971f.d: /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/lib.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/ansi.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/style.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/difference.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/display.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/write.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/windows.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/debug.rs
+
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/lib.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/ansi.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/style.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/difference.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/display.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/write.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/windows.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ansi_term-0.11.0/src/debug.rs:

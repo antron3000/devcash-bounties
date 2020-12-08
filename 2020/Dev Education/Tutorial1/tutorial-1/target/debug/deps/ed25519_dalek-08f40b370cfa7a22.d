@@ -1,0 +1,11 @@
+/home/alansky/Dev/Parity/substrate-node-template/target/debug/deps/ed25519_dalek-08f40b370cfa7a22.rmeta: /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/lib.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/constants.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/keypair.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/errors.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/public.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/secret.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/signature.rs
+
+/home/alansky/Dev/Parity/substrate-node-template/target/debug/deps/ed25519_dalek-08f40b370cfa7a22.d: /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/lib.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/constants.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/keypair.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/errors.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/public.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/secret.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/signature.rs
+
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/lib.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/constants.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/keypair.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/errors.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/public.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/secret.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/ed25519-dalek-1.0.0-pre.4/src/signature.rs:

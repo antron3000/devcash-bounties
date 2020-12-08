@@ -1,0 +1,13 @@
+    Finished release [optimized] target(s) in 0.07s
+     Running `/home/alansky/Dev/Parity/substrate-node-template/target/release/wbuild-runner/node-template-runtime6026107144293017368/target/x86_64-unknown-linux-gnu/release/wasm-build-runner-impl`
+[0m[0m[1m[32m   Compiling[0m bitflags v1.2.1
+[0m[0m[1m[32m   Compiling[0m parity-wasm v0.41.0
+[0m[0m[1m[32m   Compiling[0m sp-sandbox v0.8.0
+[0m[0m[1m[32m   Compiling[0m pallet-contracts-primitives v2.0.0
+[0m[0m[1m[32m   Compiling[0m pallet-contracts-rpc-runtime-api v0.8.0
+[0m[0m[1m[32m   Compiling[0m wasmi-validation v0.3.0
+[0m[0m[1m[32m   Compiling[0m pwasm-utils v0.14.0
+[0m[0m[1m[32m   Compiling[0m pallet-contracts v2.0.0
+[0m[0m[1m[32m   Compiling[0m node-template-runtime v2.0.0 (/home/alansky/Dev/Parity/substrate-node-template/runtime)
+[0m[0m[1m[32m   Compiling[0m node-template-runtime-wasm v1.0.0 (/home/alansky/Dev/Parity/substrate-node-template/target/release/wbuild/node-template-runtime)
+[0m[0m[1m[32m    Finished[0m release [optimized] target(s) in 27.37s

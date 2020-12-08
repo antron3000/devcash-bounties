@@ -1,0 +1,10 @@
+/home/alansky/Dev/Parity/substrate-node-template/target/release/wbuild/target/wasm32-unknown-unknown/release/deps/parity_util_mem-c74690261b1253c0.rmeta: /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/parity-util-mem-0.7.0/src/lib.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/parity-util-mem-0.7.0/src/allocators.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/parity-util-mem-0.7.0/src/malloc_size.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/parity-util-mem-0.7.0/src/primitives_impls.rs
+
+/home/alansky/Dev/Parity/substrate-node-template/target/release/wbuild/target/wasm32-unknown-unknown/release/deps/libparity_util_mem-c74690261b1253c0.rlib: /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/parity-util-mem-0.7.0/src/lib.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/parity-util-mem-0.7.0/src/allocators.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/parity-util-mem-0.7.0/src/malloc_size.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/parity-util-mem-0.7.0/src/primitives_impls.rs
+
+/home/alansky/Dev/Parity/substrate-node-template/target/release/wbuild/target/wasm32-unknown-unknown/release/deps/parity_util_mem-c74690261b1253c0.d: /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/parity-util-mem-0.7.0/src/lib.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/parity-util-mem-0.7.0/src/allocators.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/parity-util-mem-0.7.0/src/malloc_size.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/parity-util-mem-0.7.0/src/primitives_impls.rs
+
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/parity-util-mem-0.7.0/src/lib.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/parity-util-mem-0.7.0/src/allocators.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/parity-util-mem-0.7.0/src/malloc_size.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/parity-util-mem-0.7.0/src/primitives_impls.rs:

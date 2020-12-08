@@ -1,0 +1,14 @@
+/home/alansky/Dev/Parity/substrate-node-template/target/release/deps/target_lexicon-9e6bf887ad2df6d0.rmeta: /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/lib.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/host.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/parse_error.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/targets.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/triple.rs /home/alansky/Dev/Parity/substrate-node-template/target/release/build/target-lexicon-14cacd32c59e5f9e/out/host.rs
+
+/home/alansky/Dev/Parity/substrate-node-template/target/release/deps/libtarget_lexicon-9e6bf887ad2df6d0.rlib: /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/lib.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/host.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/parse_error.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/targets.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/triple.rs /home/alansky/Dev/Parity/substrate-node-template/target/release/build/target-lexicon-14cacd32c59e5f9e/out/host.rs
+
+/home/alansky/Dev/Parity/substrate-node-template/target/release/deps/target_lexicon-9e6bf887ad2df6d0.d: /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/lib.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/host.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/parse_error.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/targets.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/triple.rs /home/alansky/Dev/Parity/substrate-node-template/target/release/build/target-lexicon-14cacd32c59e5f9e/out/host.rs
+
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/lib.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/host.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/parse_error.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/targets.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/target-lexicon-0.10.0/src/triple.rs:
+/home/alansky/Dev/Parity/substrate-node-template/target/release/build/target-lexicon-14cacd32c59e5f9e/out/host.rs:
+
+# env-dep:OUT_DIR=/home/alansky/Dev/Parity/substrate-node-template/target/release/build/target-lexicon-14cacd32c59e5f9e/out

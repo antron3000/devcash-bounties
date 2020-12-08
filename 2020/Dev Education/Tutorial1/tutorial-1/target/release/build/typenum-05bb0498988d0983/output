@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/home/alansky/Dev/Parity/substrate-node-template/target/release/build/typenum-05bb0498988d0983/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/home/alansky/Dev/Parity/substrate-node-template/target/release/build/typenum-05bb0498988d0983/out/op.rs

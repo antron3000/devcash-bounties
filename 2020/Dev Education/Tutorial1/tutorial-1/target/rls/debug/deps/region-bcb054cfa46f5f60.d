@@ -1,0 +1,12 @@
+/home/alansky/Dev/devcash-bounties/2020/Dev Education/Tutorial1/substrate-node-template/target/rls/debug/deps/region-bcb054cfa46f5f60.rmeta: /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/lib.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/error.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/lock.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/os/mod.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/os/unix.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/os/linux.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/page.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/protect.rs
+
+/home/alansky/Dev/devcash-bounties/2020/Dev Education/Tutorial1/substrate-node-template/target/rls/debug/deps/region-bcb054cfa46f5f60.d: /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/lib.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/error.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/lock.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/os/mod.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/os/unix.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/os/linux.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/page.rs /home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/protect.rs
+
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/lib.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/error.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/lock.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/os/mod.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/os/unix.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/os/linux.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/page.rs:
+/home/alansky/.cargo/registry/src/github.com-1ecc6299db9ec823/region-2.2.0/src/protect.rs:

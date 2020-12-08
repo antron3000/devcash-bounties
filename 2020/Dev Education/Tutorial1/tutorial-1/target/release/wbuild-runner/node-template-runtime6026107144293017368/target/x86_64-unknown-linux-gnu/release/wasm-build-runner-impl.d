@@ -1,0 +1,1 @@
+/home/alansky/Dev/Parity/substrate-node-template/target/release/wbuild-runner/node-template-runtime6026107144293017368/target/x86_64-unknown-linux-gnu/release/wasm-build-runner-impl: /home/alansky/Dev/Parity/substrate-node-template/target/release/wbuild-runner/node-template-runtime6026107144293017368/src/main.rs
